@@ -130,6 +130,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="ModUtils\Patterns.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dsound.def" />
@@ -137,6 +138,7 @@
   <ItemGroup>
     <ClInclude Include="dsound.h" />
     <ClInclude Include="Logging.h" />
+    <ClInclude Include="ModUtils\Patterns.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
