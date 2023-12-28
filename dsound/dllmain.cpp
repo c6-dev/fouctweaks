@@ -21,7 +21,6 @@ std::ofstream Log::LOG("dsound.log");
 
 
 DirectSoundEnumerateAProc m_pDirectSoundEnumerateA;
-DirectSoundCreate8Proc m_pDirectSoundCreate8;
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD fdwReason, LPVOID lpReserved)
 {
