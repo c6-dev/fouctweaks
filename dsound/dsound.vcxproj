@@ -83,6 +83,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>dsound.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(TargetPath)" "C:\Games\Steam\steamapps\common\FlatOut Ultimate Carnage"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -101,6 +104,9 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ModuleDefinitionFile>dsound.def</ModuleDefinitionFile>
     </Link>
+    <PostBuildEvent>
+      <Command>copy "$(TargetPath)" "C:\Games\Steam\steamapps\common\FlatOut Ultimate Carnage"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -133,14 +139,19 @@
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="ModUtils\Patterns.cpp" />
+    <ClCompile Include="SafeWrite.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="dsound.def" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="calls.h" />
     <ClInclude Include="dsound.h" />
     <ClInclude Include="Logging.h" />
     <ClInclude Include="ModUtils\Patterns.h" />
+    <ClInclude Include="patches.h" />
+    <ClInclude Include="SafeWrite.h" />
+    <ClInclude Include="types.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

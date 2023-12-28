@@ -24,6 +24,9 @@
     <ClCompile Include="ModUtils\Patterns.cpp">
       <Filter>Source Files\ModUtils</Filter>
     </ClCompile>
+    <ClCompile Include="SafeWrite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="dsound.def">
@@ -39,6 +42,18 @@
     </ClInclude>
     <ClInclude Include="ModUtils\Patterns.h">
       <Filter>Source Files\ModUtils</Filter>
+    </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="calls.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SafeWrite.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="patches.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
