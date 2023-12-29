@@ -19,4 +19,6 @@ void writePatches() {
 		jumpAddr = (UInt32)hook::pattern("68 F0 00 00 00 68 25 04 00").get_first(-7);
 		WriteRelJump((UInt32)skipLauncher, (UInt32)SkipLauncher);
 
+		auto skipIntro = hook::pattern("8B 55 00 D9 EE 8B 42 48 51").get_first(-12);
+		SafeWrite16((UInt32)skipIntro, 0xE990);
 }
