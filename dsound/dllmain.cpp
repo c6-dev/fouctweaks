@@ -21,6 +21,7 @@ std::ofstream Log::LOG("dsound.log");
 
 
 DirectSoundEnumerateAProc m_pDirectSoundEnumerateA;
+DirectSoundCreate8Proc m_pDirectSoundCreate8;
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD fdwReason, LPVOID lpReserved)
 {
@@ -40,6 +41,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD fdwReason, LPVOID lpReserved)
 
 		// Get function addresses
 		m_pDirectSoundEnumerateA = (DirectSoundEnumerateAProc)GetProcAddress(dsounddll, "DirectSoundEnumerateA");
+		m_pDirectSoundCreate8 = (DirectSoundCreate8Proc)GetProcAddress(dsounddll, "DirectSoundCreate8");
 		writePatches();
 		break;
 
@@ -62,6 +64,20 @@ HRESULT WINAPI DirectSoundEnumerateA(LPDSENUMCALLBACKA pDSEnumCallback, LPVOID p
 	}
 
 	return m_pDirectSoundEnumerateA(pDSEnumCallback, pContext);
+}
+
+
+HRESULT WINAPI DirectSoundCreate8(LPCGUID pcGuidDevice, LPDIRECTSOUND8 *ppDS8, LPUNKNOWN pUnkOuter)
+{
+	Log() << "DirectSoundCreate8";
+	if (!m_pDirectSoundCreate8)
+	{
+		return E_FAIL;
+	}
+
+	HRESULT hr = m_pDirectSoundCreate8(pcGuidDevice, ppDS8, pUnkOuter);
+
+	return hr;
 }
 
 
