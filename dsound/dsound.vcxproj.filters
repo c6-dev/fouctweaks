@@ -55,5 +55,8 @@
     <ClInclude Include="patches.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="borderless.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

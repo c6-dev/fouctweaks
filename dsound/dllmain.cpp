@@ -13,7 +13,7 @@
 *      being the original software.
 *   3. This notice may not be removed or altered from any source distribution.
 */
-
+#define _CRT_SECURE_NO_WARNINGS
 #include "dsound.h"
 
 
@@ -42,6 +42,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD fdwReason, LPVOID lpReserved)
 		// Get function addresses
 		m_pDirectSoundEnumerateA = (DirectSoundEnumerateAProc)GetProcAddress(dsounddll, "DirectSoundEnumerateA");
 		m_pDirectSoundCreate8 = (DirectSoundCreate8Proc)GetProcAddress(dsounddll, "DirectSoundCreate8");
+		loadIniOptions();
 		writePatches();
 		break;
 

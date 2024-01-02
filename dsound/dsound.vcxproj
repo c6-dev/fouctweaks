@@ -145,6 +145,7 @@
     <None Include="dsound.def" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="borderless.h" />
     <ClInclude Include="calls.h" />
     <ClInclude Include="dsound.h" />
     <ClInclude Include="Logging.h" />

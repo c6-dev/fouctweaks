@@ -8,6 +8,8 @@ void SafeWriteBuf(UInt32 addr, void* data, UInt32 len);
 // 5 bytes
 void WriteRelJump(UInt32 jumpSrc, UInt32 jumpTgt);
 void WriteRelCall(UInt32 jumpSrc, UInt32 jumpTgt);
+// 5 bytes + NOP for IAT calls
+void WriteRelLibCall(UInt32 jumpSrc, UInt32 jumpTgt);
 
 // 6 bytes
 void WriteRelJnz(UInt32 jumpSrc, UInt32 jumpTgt);

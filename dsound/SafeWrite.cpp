@@ -49,7 +49,13 @@ void WriteRelCall(UInt32 jumpSrc, UInt32 jumpTgt)
 	SafeWrite8(jumpSrc, 0xE8);
 	SafeWrite32(jumpSrc + 1, jumpTgt - jumpSrc - 1 - 4);
 }
-
+void WriteRelLibCall(UInt32 jumpSrc, UInt32 jumpTgt)
+{
+	// call rel32
+	SafeWrite8(jumpSrc, 0xE8);
+	SafeWrite32(jumpSrc + 1, jumpTgt - jumpSrc - 1 - 4);
+	SafeWrite8(jumpSrc + 5, 0x90);
+}
 void WriteRelJnz(UInt32 jumpSrc, UInt32 jumpTgt)
 {
 	// jnz rel32
