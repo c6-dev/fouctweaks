@@ -19,6 +19,8 @@ __declspec(naked) void SkipLauncher() {
 		jmp jumpAddr
 	}
 }
+
+
 void loadIniOptions() {
 	char filename[MAX_PATH];
 	GetModuleFileNameA(NULL, filename, MAX_PATH);
@@ -42,4 +44,5 @@ void writePatches() {
 		WriteRelLibCall(0x60F16F, (UInt32)borderless::CreateWindowExA_Hook);
 		WriteRelLibCall(0x60F08F, (UInt32)borderless::AdjustWindowRect_Hook);
 		WriteRelLibCall(0x60F235, (UInt32)borderless::SetWindowPos_Hook);
+		WriteRelCall(0x5BA4FA, (UInt32)borderless::GetInputCaps_Hook);
 }
