@@ -9,6 +9,7 @@ UInt32 jumpAddr = NULL;
 
 bool bSkipLauncher = 0;
 bool bSkipIntro = 0;
+bool bHideCursorInWindowed = 0;
 
 __declspec(naked) void SkipLauncher() {
 	__asm {
@@ -28,6 +29,7 @@ void loadIniOptions() {
 	bSkipLauncher = GetPrivateProfileIntA("MAIN", "bSkipLauncher", 0, filename);
 	bSkipIntro = GetPrivateProfileIntA("MAIN", "bSkipIntro", 0, filename);
 	borderless::bBorderlessWindowed = GetPrivateProfileIntA("MAIN", "bBorderlessWindowed", 0, filename);
+	bHideCursorInWindowed = GetPrivateProfileIntA("MAIN", "bHideCursorInWindowed", 0, filename);
 }
 void writePatches() {
 	if (bSkipLauncher) {
@@ -41,8 +43,13 @@ void writePatches() {
 		auto skipIntroJump = hook::pattern("8B 44 24 14 85 C0 ? ? 50").get_first();
 		WriteRelJump((UInt32)skipIntro, (UInt32)skipIntroJump);
 	}
-		WriteRelLibCall(0x60F16F, (UInt32)borderless::CreateWindowExA_Hook);
-		WriteRelLibCall(0x60F08F, (UInt32)borderless::AdjustWindowRect_Hook);
-		WriteRelLibCall(0x60F235, (UInt32)borderless::SetWindowPos_Hook);
-		WriteRelCall(0x5BA4FA, (UInt32)borderless::GetInputCaps_Hook);
+
+	if (bHideCursorInWindowed) {
+		PatchMemoryNop(0x457A34, 8);
+	}
+
+	WriteRelLibCall(0x60F16F, (UInt32)borderless::CreateWindowExA_Hook);
+	WriteRelLibCall(0x60F08F, (UInt32)borderless::AdjustWindowRect_Hook);
+	WriteRelLibCall(0x60F235, (UInt32)borderless::SetWindowPos_Hook);
+
 }

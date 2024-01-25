@@ -100,13 +100,4 @@ namespace borderless {
 
     }
 
-    // hide cursor when controller is connected
-    DWORD __stdcall GetInputCaps_Hook(DWORD dwUserIndex, DWORD dwFlags, void* pCapabilities) {
-        DWORD result = StdCall<DWORD>(0x66A9C6, dwUserIndex, dwFlags, pCapabilities);
-        if (!result && bBorderlessWindowed) {
-            SetCursor(NULL);
-        }
-        return result;
-    }
-
 }
